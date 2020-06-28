@@ -1,3 +1,5 @@
+package basics
+
 import spock.lang.Specification
 
 

@@ -1,3 +1,5 @@
+package basics
+
 import spock.lang.Specification
 
 
@@ -24,8 +26,8 @@ class MathTest extends Specification{
     }
 
     //executing an specific class
-    //mvn -Dtest=MathTest test
-    //gradle -Dtest.single=MathTest test
+    //mvn -Dtest=basics.MathTest test
+    //gradle -Dtest.single=basics.MathTest test
 
 
 
