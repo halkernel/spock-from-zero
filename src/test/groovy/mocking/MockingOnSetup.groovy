@@ -1,0 +1,4 @@
+package mocking
+
+class MockingOnSetup {
+}

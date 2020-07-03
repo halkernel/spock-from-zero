@@ -1,4 +1,4 @@
-package com.spock;
+package com.spock.general;
 
 public class HelloWorld {
 

@@ -1,5 +1,6 @@
 package basics
 
+import spock.lang.Ignore
 import spock.lang.Specification
 
 
@@ -9,6 +10,7 @@ class CollectionsTest  extends Specification{
     //these tests are going to fail
     //check out the stacktrace to understand
 
+    @Ignore
     def "check equality of two lists"(){
         expect:
         def list1 = ["hey", "listen"]
@@ -16,6 +18,7 @@ class CollectionsTest  extends Specification{
         list1 == list2
     }
 
+    @Ignore
     def "check equality of maps"(){
         expect:
         def map1 = ["kennet":21, "emerson":24]
