@@ -1,11 +1,26 @@
 package com.spock.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity(name = "person")
 public class Person {
 
-    private int id;
+    @Id
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "age")
     private int age;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "surname")
     private String surname;
+
+    @Column(name = "email")
     private String email;
 
     public int getId() {
