@@ -3,6 +3,7 @@ package com.spock.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity(name = "person")
 public class Person {
@@ -12,7 +13,7 @@ public class Person {
     private Integer id;
 
     @Column(name = "age")
-    private int age;
+    private Integer age;
 
     @Column(name = "name")
     private String name;
@@ -31,7 +32,7 @@ public class Person {
         this.id = id;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 

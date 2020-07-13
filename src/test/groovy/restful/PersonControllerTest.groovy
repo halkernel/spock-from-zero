@@ -1,6 +1,7 @@
 package restful
 
 import groovyx.net.http.ContentType
+import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
 import org.apache.http.HttpResponse
 import org.junit.runner.RunWith
@@ -41,6 +42,23 @@ class PersonControllerTest extends Specification{
         response.data.name == person.name
         response.data.surname == person.surname
         response.data.email == person.email
+
+    }
+
+    def 'should get 400 ao when a person attempted to be created with invalid payload'(){
+        given: 'age contains invalid value in order to throw 400'
+        def person = [id:'1', age:'age', name:'Kennet', surname:'Calixto', email:'kennet.emerson@gmail.com']
+
+        when:
+        HttpResponseException response = this.restClient.post(
+                path: this.endpoint,
+                body: person)
+
+        then: 'validating response'
+        thrown(HttpResponseException)
+        print( response)
+
+
 
     }
 

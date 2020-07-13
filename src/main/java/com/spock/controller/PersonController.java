@@ -2,6 +2,7 @@ package com.spock.controller;
 
 
 import com.spock.enums.ControllerConstants;
+import com.spock.exceptions.InvalidPayloadException;
 import com.spock.model.Person;
 import com.spock.repository.PersonRepository;
 import com.spock.service.PersonService;
