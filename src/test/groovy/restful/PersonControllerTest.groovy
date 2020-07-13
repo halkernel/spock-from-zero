@@ -4,9 +4,6 @@ import groovyx.net.http.ContentType
 import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
 import org.apache.http.HttpResponse
-import org.junit.runner.RunWith
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit4.SpringRunner
 import spock.lang.Specification
 
 
@@ -45,22 +42,50 @@ class PersonControllerTest extends Specification{
 
     }
 
-    def 'should get 400 ao when a person attempted to be created with invalid payload'(){
+    def 'should get 400 when a person attempted to be created with invalid payload'(){
         given: 'age contains invalid value in order to throw 400'
         def person = [id:'1', age:'age', name:'Kennet', surname:'Calixto', email:'kennet.emerson@gmail.com']
 
         when:
-        HttpResponseException response = this.restClient.post(
+        this.restClient.post(
                 path: this.endpoint,
                 body: person)
 
         then: 'validating response'
-        thrown(HttpResponseException)
-        print( response)
-
-
+        HttpResponseException ex = thrown(HttpResponseException)
+        ex.statusCode == 400
 
     }
+
+    def 'should get 405 when a person is tried to be created with a PUT instead of a POST'(){
+        given: 'age contains invalid value in order to throw 405'
+        def person = createPerson()
+
+        when:
+        this.restClient.put(
+                path: this.endpoint,
+                body: person)
+
+        then: 'validating response'
+        HttpResponseException ex = thrown(HttpResponseException)
+        ex.statusCode == 405
+
+    }
+
+    def 'should get 404 when a resource does not exist'(){
+        given:
+        def endpoint = endpoint + '/5'
+
+        when:
+        this.restClient.get(path: endpoint)
+
+        then: 'validating response'
+        HttpResponseException ex = thrown(HttpResponseException)
+        ex.statusCode == 404
+
+    }
+
+
 
 
 
