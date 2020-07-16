@@ -85,6 +85,7 @@ class PersonControllerTest extends Specification{
 
     }
 
+    //TODO get a list of persons and validate if fields are instance of
 
 
 
