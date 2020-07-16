@@ -1,12 +1,12 @@
 package mocking
 
-import com.spock.general.CalculateAge
+import com.spock.general.Calculate
 import com.spock.general.SayMyName
 import spock.lang.Specification
 
 class Mocking extends Specification{
 
-    def sayMyName = new SayMyName(new CalculateAge())
+    def sayMyName = new SayMyName(new Calculate())
 
     def "test mocking of return"(){
 
@@ -28,7 +28,7 @@ class Mocking extends Specification{
 
     def "test call of mocking methods"(){
         given:
-        def calculateAge = Mock(CalculateAge)
+        def calculateAge = Mock(Calculate)
         def myName = new SayMyName(calculateAge)
 
         when:

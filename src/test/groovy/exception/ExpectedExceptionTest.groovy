@@ -1,11 +1,11 @@
 package exception
 
 import spock.lang.Specification
-import com.spock.general.CalculateAge
+import com.spock.general.Calculate
 
 class ExpectedExceptionTest extends Specification{
 
-    def calculateAge = new CalculateAge()
+    def calculateAge = new Calculate()
 
     def "expected IllegalArgumentException thrown when age is 0"(){
         given:
