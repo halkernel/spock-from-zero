@@ -7,6 +7,7 @@ import org.apache.http.HttpResponse
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
+import spock.lang.Ignore
 
 @Stepwise //will execute the tests in the order they are declared
 class SaveAndReadTest extends Specification{
@@ -26,6 +27,7 @@ class SaveAndReadTest extends Specification{
         restClient = new RESTClient(this.baseUri, ContentType.JSON)
     }
 
+    @Ignore
     def 'should create a person'(){
         given:
         def person = this.createPerson()
@@ -46,6 +48,7 @@ class SaveAndReadTest extends Specification{
 
     }
 
+    @Ignore
     def 'should get 200 when a resource is successfully found'(){
         given:
         def endpoint = endpoint + '/' + this.response.data.id

@@ -5,7 +5,7 @@ import groovyx.net.http.HttpResponseException
 import groovyx.net.http.RESTClient
 import org.apache.http.HttpResponse
 import spock.lang.Specification
-
+import spock.lang.Ignore
 
 class PersonControllerTest extends Specification{
 
@@ -22,6 +22,7 @@ class PersonControllerTest extends Specification{
         restClient.getClient().getParams().setParameter("http.socket.timeout", new Integer(10000))
     }
 
+    @Ignore
     def 'should create a person'(){
         given:
         def person = this.createPerson()
@@ -42,6 +43,8 @@ class PersonControllerTest extends Specification{
 
     }
 
+
+    @Ignore
     def 'should get 400 when a person attempted to be created with invalid payload'(){
         given: 'age contains invalid value in order to throw 400'
         def person = [id:'1', age:'age', name:'Kennet', surname:'Calixto', email:'kennet.emerson@gmail.com']
@@ -57,6 +60,7 @@ class PersonControllerTest extends Specification{
 
     }
 
+    @Ignore
     def 'should get 405 when a person is tried to be created with a PUT instead of a POST'(){
         given: 'age contains invalid value in order to throw 405'
         def person = createPerson()
@@ -72,6 +76,7 @@ class PersonControllerTest extends Specification{
 
     }
 
+    @Ignore
     def 'should get 404 when a resource does not exist'(){
         given:
         def endpoint = endpoint + '/5'
